@@ -3,6 +3,12 @@
 #### 2048 게임
 <img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/c94c1ccb-29fc-4119-95a4-0c4e0842f9d7" alt="화면 기록" width="30%" />
 
+#### 틱택토
+<img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/c0cb4eee-251a-460c-b498-d9383d922c3a" alt="화면 기록" width="30%" />
+
+#### 두더지 잡기
+<img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/e2338b1e-82ac-416a-b923-970565e511aa" alt="화면 기록" width="30%" />
+
 #### 카드 찾기
 <img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/75174dc0-afe4-4065-8102-32d3f066a9d6" alt="화면 기록" width="50%" />
 
