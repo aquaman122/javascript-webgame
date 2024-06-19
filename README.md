@@ -15,5 +15,11 @@
 #### 반응속도 테스트
 <img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/f8300f52-19bf-4323-a907-5180a498fc4a" alt="화면 기록" width="50%" />
 
+#### 가위바위보
+<img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/d4794599-0ee3-4fc8-9305-91828fd7f277" alt="화면 기록" width="50%" />
+
+#### Text RPG
+<img src="https://github.com/aquaman122/javascript-webgame/assets/89385423/1235971a-6002-4930-ab4f-261d19f0cb54" alt="화면 기록" width="50%" />
+
 #### 계산기 
 <img width="263" alt="스크린샷 2024-06-19 오후 3 47 16" src="https://github.com/aquaman122/javascript-webgame/assets/89385423/4de6e146-9ea6-4e8e-bf3e-0e02a2434639">
