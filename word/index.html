@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>끝말잇기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div><span id="order">1</span>번째 참가자</div>
+  <div>제시어: <span id="word"></span></div>
+  <input type="text">
+  <button>입력</button>
+  <script>
+    const people = parseInt(prompt('참가자가 몇명인가요?'), 10);
+
+    const $order = document.querySelector('#order');
+    const $word = document.querySelector('#word');
+    const $input = document.querySelector('input');
+    const $button = document.querySelector('button');
+    let word;
+    let newWord;
+    let words = [];
+
+    $input.addEventListener('input', () => {
+      newWord = event.target.value;
+    });
+
+    $button.addEventListener('click', (event) => {
+
+      if (people) {
+      if (!word || word[word.length - 1] === newWord[0] && newWord.length === 3) {
+        word = newWord;
+        $word.textContent = word;
+
+        const order = parseInt($order.textContent);
+          if (order < people) {
+            $order.textContent++;
+          } else {
+            $order.textContent = 1;
+          }
+
+        $input.value = '';
+        $input.focus();
+        if (!words.includes(newWord)) {
+          words.push(word);
+        } else {
+          alert('틀렸습니다');
+        }
+      } else {
+          alert('틀렸습니다.');
+          word = '';
+          newWord = '';
+          words = '';
+          $order.textContent = 1;
+          $word.textContent = '';
+          $input.value = '';
+          $input.focus();
+        }
+      } else {
+
+      }
+      });
+  </script>
+</body>
+</html>

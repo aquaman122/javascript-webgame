@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>틱택토</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const $table = document.createElement('table');
+    const $result = document.createElement('div');
+    const data = [];
+    let turn = 'O';
+
+    const checkWinner = (target) => {
+      let rowIndex;
+      let cellIndex;
+      data.forEach((row, ri) => {
+        row.forEach((cell, ci) => {
+          if (cell === target) {
+            rowIndex = ri; 
+            cellIndex = ci;
+          }
+        });
+      });
+      let hasWinner = false;
+
+      if (
+        data[rowIndex][0].textContent === turn &&
+        data[rowIndex][1].textContent === turn &&
+        data[rowIndex][2].textContent === turn
+      ) {
+        hasWinner = true; 
+      }
+      // 가로줄 일치
+      if (
+        data[0][cellIndex].textContent === turn &&
+        data[1][cellIndex].textContent === turn &&
+        data[2][cellIndex].textContent === turn
+      ) {
+        hasWinner = true;
+      } 
+      // 세로줄 일치
+      if (
+        data[0][2].textContent === turn &&
+        data[1][1].textContent === turn &&
+        data[2][0].textContent === turn
+      ) {
+        hasWinner = true;
+      }
+      if (
+        data[2][0].textContent === turn &&
+        data[1][1].textContent === turn &&
+        data[0][2].textContent === turn
+      ) {
+        hasWinner = true;
+      }
+      // 대각선
+      return hasWinner;
+    };
+
+    const checkWinAndDraw = (target) => {
+      const hasWinner = checkWinner(target);
+      if (hasWinner) {
+        $result.textContent = `${turn}님이 승리!`;
+        $table.removeEventListener('click', callback);
+        return;
+      }
+      //승부 판단
+      let draw = true;
+      data.forEach((row) => {
+        row.forEach((cell) => {
+          if (!cell.textContent) {
+            draw = false;
+          }
+        });
+      });
+      if (draw) {
+        $result.textContent = `무승부`;
+        return;
+      }
+      turn = turn === 'X' ? 'O' : 'X';
+    }
+
+    let clickable = true;
+    const callback = (event) => {
+      if (!clickable) return;
+      if (event.target.textContent) return;
+        // alread have space;
+        event.target.textContent = turn;
+        checkWinAndDraw(event.target);
+        // 무승부 검사
+        // toggle turn;
+      if (turn === 'X') {
+        const emptyCells = data.flat().filter((ele) => !ele.textContent);
+        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        clickable = false;
+        setTimeout(() => {
+          randomCell.textContent = 'X';
+          checkWinAndDraw(randomCell);
+          clickable = true;
+        }, 1000)
+      }
+    }
+
+    for (let i =0; i < 3; i++) {
+      const $tr = document.createElement('tr');
+      const cells = [];
+      for (let j=0; j < 3; j++) {
+        const $td = document.createElement('td');
+        cells.push($td);
+        $tr.append($td);
+      }
+      data.push(cells);
+      $table.append($tr);
+    }
+
+    document.body.append($table);
+    document.body.append($result);
+    $table.addEventListener('click', callback);
+  </script>
+</body>
+</html>
